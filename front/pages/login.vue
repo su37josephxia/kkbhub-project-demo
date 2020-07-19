@@ -35,6 +35,10 @@
     <el-form-item label=" ">
       <!-- <button @clikc.prevent></button> -->
       <el-button type="primary" @click.native.prevent="handleLogin" >登录</el-button>
+      <nuxt-link to="/register">
+      <el-button type="primary" >注册</el-button>
+
+      </nuxt-link>
     </el-form-item>
 
   </el-form>
@@ -76,7 +80,7 @@ export default {
           if(ret.code==0){
             // ttoken的存储 登录成功，返回token
             this.$message.success('登录成功')
-            localStorage.setItem('token',ret.data.token)
+            localStorage.setItem('KKB_USER_TOKEN',ret.data.token)
             setTimeout(()=>{
                 this.$router.push("/")
             },500)

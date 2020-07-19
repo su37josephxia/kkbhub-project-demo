@@ -13,3 +13,5 @@ code 0 是成功 其他都是失败
 -666 登录状态过期
 
 <!-- 权限 -->
+
+mongod --dbpath ~/data/db

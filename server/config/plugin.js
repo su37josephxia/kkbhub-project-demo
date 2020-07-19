@@ -9,16 +9,16 @@
 // }
 
 exports.mongoose = {
-  enable:true,
-  package:'egg-mongoose'
+  enable: true,
+  package: 'egg-mongoose',
 }
 
 exports.routerGroup = {
-  enable:true,
-  package:'egg-router-group'
+  enable: true,
+  package: 'egg-router-group',
 }
 
 exports.validate = {
-  enable:true,
-  package:'egg-validate'
+  enable: true,
+  package: 'egg-validate',
 }

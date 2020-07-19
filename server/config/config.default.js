@@ -16,10 +16,10 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1584231361040_3227'
 
   config.multipart = {
-    mode:'file',
-    whitelist:()=>true
+    mode: 'file',
+    whitelist: () => true,
   }
-  config.UPLOAD_DIR = path.resolve(__dirname,'..','app/public')
+  config.UPLOAD_DIR = path.resolve(__dirname, '..', 'app/public')
   // add your middleware config here
   config.middleware = []
 
@@ -31,19 +31,19 @@ module.exports = appInfo => {
   return {
     ...config,
     ...userConfig,
-    security:{
-      csrf:{
-        enable:false
-      }
+    security: {
+      csrf: {
+        enable: false,
+      },
     },
-    mongoose:{
-      client:{
-        url:"mongodb://127.0.0.1:27017/kkbhub",
-        options:{}
-      }
+    mongoose: {
+      client: {
+        url: 'mongodb://127.0.0.1:27017/kkbhub',
+        options: {},
+      },
     },
-    jwt:{
-      secret:'@Kaikeba!123Abc!:'
-    }
+    jwt: {
+      secret: '@Kaikeba!123Abc!:',
+    },
   }
 }

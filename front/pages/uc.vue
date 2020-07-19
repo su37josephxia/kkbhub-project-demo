@@ -69,11 +69,10 @@
 
 <script>
 import sparkMD5 from 'spark-md5'
-const CHUNK_SIZE = 0.1*1024*1024
+const CHUNK_SIZE = 10*1024*1024
 export default {
   async mounted(){
     const ret = await this.$http.get('/user/info')
-    console.log(ret)
     this.bindEvents()
   },
   data(){
@@ -293,7 +292,6 @@ export default {
         hash:this.hash,
         ext:this.file.name.split('.').pop()
       })
-      console.log({uploaded, uploadedList})
       if(uploaded){
         // 秒传
         return this.$message.success('秒传成功')
@@ -330,18 +328,19 @@ export default {
           // form.append('index',chunk.index)
           return {form, index:chunk.index,error:0}
         })
-        // .map(({form,index})=> this.$http.post('/uploadfile',form,{
-        //   onUploadProgress:progress=>{
-        //     // 不是整体的进度条了，而是每个区块有自己的进度条，整体的进度条需要计算
-        //     this.chunks[index].progress = Number(((progress.loaded/progress.total)*100).toFixed(2))
-        //   }
-        // }))
+        .map(({form,index})=> this.$http.post('/uploadfile',form,{
+          onUploadProgress:progress=>{
+            // 不是整体的进度条了，而是每个区块有自己的进度条，整体的进度条需要计算
+            this.chunks[index].progress = Number(((progress.loaded/progress.total)*100).toFixed(2))
+          }
+        }))
       // @todo 并发量控制 
       // 尝试申请tcp链接过多，也会造成卡顿
       // 异步的并阿叔控制，
       // await Promise.all(requests)
 
-      await this.sendRequest(requests)
+      // await this.sendRequest(requests)
+      await Promise.all(requests)
       await this.mergeRequest()
       // const form = new FormData()
       // form.append('name','file')
@@ -418,11 +417,13 @@ export default {
       })
     },
     async mergeRequest(){
-      this.$http.post('/mergefile',{
+      const ret = await this.$http.post('/mergefile',{
         ext:this.file.name.split('.').pop(),
         size:CHUNK_SIZE,
         hash:this.hash
       })
+      const url = ret.data.url
+      await this.$http.put('/user/info',{url:"/api"+url})
     },
     handleFileChange(e){
 

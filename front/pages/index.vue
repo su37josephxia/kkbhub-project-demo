@@ -1,39 +1,55 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        front
-      </h1>
-      <h2 class="subtitle">
-        My classy Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div class="kkb-container">
+
+    <VirtualList :listData="articles" :estimatedItemSize="300" v-slot="slotProps">
+    <ArticleItem :article="slotProps"  :key="slotProps._id"/>
+    <!-- <span>???</span> -->
+  </VirtualList>
+
+
+
+
+      <!-- <ArticleItem 
+        v-for="article in articles"
+        :article="article" 
+        :key="article._id">
+
+      </ArticleItem> -->
+      
+
+      <!-- <h1>开课吧</h1>
+
+      <ArticleItem 
+        v-for="article in articles"
+        :article="article" 
+        :key="article._id">
+
+      </ArticleItem>
+       -->
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import ArticleItem from '~/components/ArticleItem.vue'
+import VirtualList from '~/components/VirtualList.vue'
 
 export default {
-  components: {
-    Logo
+  components:{
+    ArticleItem,
+    VirtualList
+  },
+  data(){
+    return {
+      articles:[]
+    }
+  },
+  async mounted(){
+    let ret = await this.$http.get('/article')
+    if(ret.code==0){
+      this.articles = ret.data
+    }
+
   }
 }
 </script>
@@ -68,5 +84,12 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  margin:0;
 }
 </style>

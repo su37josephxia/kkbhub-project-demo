@@ -32,7 +32,7 @@ export default {
   data(){
     return {
       // timer:
-      content:`# 开课吧 
+      content:`# 开课吧${String(Math.random()).slice(2,6)}
 * 上课
 * 吃饭
 * 写代码
@@ -92,10 +92,20 @@ export default {
     async submit(){
       // 文章列表，点赞，关注，草稿
       // user =》 aticle  一对多
-      let ret = await this.$http.postt('/article/create', {
+      let ret = await this.$http.post('/article/create', {
         content:this.content, //  selected:false
         compiledContent:this.compiledContent // 显示只读取这个
       })
+      if(ret.code==0){
+        this.$notify({
+          title:'创建成功',
+          type:'success',
+          message:`文章《${ret.data.title}》创建成功`
+        })
+        setTimeout(()=>{
+          this.$router.push({ path:'/article/'+ret.data.id})
+        })
+      }
     }
   }
 }
