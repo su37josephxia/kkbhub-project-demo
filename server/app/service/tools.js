@@ -35,7 +35,7 @@ class ToolService extends Service {
     })
 
     await Promise.all(
-      files.map((file, index) => {
+      files.forEach((file, index) => {
         pipStream(file, fse.createWriteStream(dest, {
           start: index * size,
           end: (index + 1) * size,

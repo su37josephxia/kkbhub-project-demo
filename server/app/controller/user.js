@@ -92,7 +92,6 @@ class UserController extends BaseController {
   }
   async updateInfo() {
     const { ctx } = this
-    const { email } = ctx.state
     const url = ctx.request.body.url
 
     await ctx.model.User.updateOne(
