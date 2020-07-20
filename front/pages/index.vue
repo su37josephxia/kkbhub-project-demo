@@ -1,8 +1,8 @@
 <template>
   <div class="kkb-container">
-
     <VirtualList :listData="articles" :estimatedItemSize="300" v-slot="slotProps">
-    <ArticleItem :article="slotProps"  :key="slotProps._id"/>
+    <!-- <ArticleItem :article="slotProps"  :key="slotProps._id"/> -->
+    <div>ppp</div>
     <!-- <span>???</span> -->
   </VirtualList>
 

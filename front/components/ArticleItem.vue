@@ -1,11 +1,13 @@
 <template>
   <div class="article-item">
     <!-- 显示文章列表 -->
-    <nuxt-link :to='"/article/"+article._id'>
       <h2 style="width:900px">
+    <nuxt-link :to='"/article/"+article._id'>
+
         {{article.title}}
-      </h2>
     </nuxt-link>
+
+      </h2>
     <p>
         <UserDisplay :user="article.author"></UserDisplay>
         <span class="action">
@@ -30,8 +32,12 @@ export default {
 .article-item{
   padding:20px 15px;
   border-bottom:2px solid #eee;
+  h2{
+    height:100px;
+  }
   a{
     color:#67c23a;
+    
   }
   .action{
     display:inline-block;

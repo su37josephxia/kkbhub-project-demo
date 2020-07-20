@@ -20,7 +20,7 @@ module.exports = app => {
     like: { type: Number, required: false, default: 0 }, // 点赞数
     dislike: { type: Number, required: false, default: 0 },
 
-  })
+  }, { timestamps: true })
 
   return mongoose.model('Article', ArticleSchema)
 }

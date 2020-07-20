@@ -19,6 +19,14 @@ const mutations = {
     state.email = user.email
     state.nickname = user.nickname
     state.avatar = user.avatar
+  },
+  LOGOUT(state){
+    state.id = ''
+    state.email = ''
+    state.nickname = ''
+    state.avatar = ''
+    state.token  = ''
+
   }
 }
 

@@ -16,7 +16,7 @@
 
 
         <el-menu-item v-if="userinfo.id" index="3" class="pull-right">
-          <nuxt-link to="/user">退出</nuxt-link>
+          <a @click="logout">退出</a>
         </el-menu-item>
         <el-menu-item v-if="userinfo.id" index="4" class="pull-right">
           <UserDisplay :user="userinfo">
@@ -65,6 +65,10 @@ export default {
     }
   },
   methods:{
+    logout(){
+      localStorage.removeItem('KKB_USER_TOKEN')
+      this.$store.commit('user/LOGOUT')
+    },
     async getUserInfo(){
       // 获取用户个人信息，如果有登录状态
       let token = localStorage.getItem('KKB_USER_TOKEN')
@@ -105,6 +109,7 @@ a{
 }
 .kkb-container{
   width:980px;
+  height:80vh;
   margin:0 auto;
   background: #fff;
   padding:20px;
