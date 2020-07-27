@@ -1,0 +1,22 @@
+version: '3.1'
+services:
+  mongo:
+    container_name: mongo
+    #构建容器
+    build: ./dump
+    ports:
+        - "27017:27017"
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    depends_on:
+      - mongo
+    ports:
+      - 8081:8081
+  server:
+    container_name: server
+    #构建容器
+    build: ./server
+    ports:
+        - "7001:7001"

@@ -1,0 +1,1 @@
+docker-compose exec mongo mongorestore --db kkbhub ./kkbhub
