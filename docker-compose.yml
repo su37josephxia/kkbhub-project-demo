@@ -16,7 +16,17 @@ services:
       - 8081:8081
   server:
     container_name: server
+    depends_on:
+      - mongo
     #构建容器
     build: ./server
     ports:
         - "7001:7001"
+  front:
+    container_name: front
+    depends_on:
+      - server
+    #构建容器
+    build: ./front
+    ports:
+        - "3000:3000"
