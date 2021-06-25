@@ -10,7 +10,7 @@ class ArticleController extends BaseController {
     // 访问量统计
     const { ctx } = this
     const { id } = ctx.params
-    
+
     const article = await ctx.model.Article.findOneAndUpdate({ _id: id }, { $inc: { views: 1 } }).populate('author')
     this.success(article)
   }

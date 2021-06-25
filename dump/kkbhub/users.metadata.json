@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"kkbhub.users"}],"uuid":"d72945bf56434e89aa187cc82f7697b8"}

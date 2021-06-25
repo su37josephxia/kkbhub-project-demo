@@ -63,7 +63,7 @@ describe('controller/article', () => {
 
     it('Mock登录', async () => {
       // mock模拟单元测试
-  
+
       const mockModel = {
         findOneAndUpdate: () => mockModel,
         populate: () => ({ name: 'helloworld' }),
@@ -71,7 +71,7 @@ describe('controller/article', () => {
       app.model.Article = mockModel
 
       // Mock Jwt
-      app._app.middlewares.jwt = app => (ctx,next) => {
+      app._app.middlewares.jwt = app => (ctx, next) => {
         next()
       }
 

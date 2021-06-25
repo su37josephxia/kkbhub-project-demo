@@ -6,6 +6,11 @@
 docker-compose up -d
 ```
 
+### 强制重新部署
+```bash
+docker-compose up --force-recreate --build
+```
+
 ### 初始化数据
 ```
 ./dump/restore.sh
