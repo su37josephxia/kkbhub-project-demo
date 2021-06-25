@@ -3,13 +3,14 @@ const marked = require('marked')
 class ArticleController extends BaseController {
   async index() {
     const { ctx } = this
-    const articles = await ctx.model.Article.find().populate('author').sort({ createdAt:-1})
+    const articles = await ctx.model.Article.find().populate('author').sort({ createdAt: -1 })
     this.success(articles)
   }
   async detail() {
     // 访问量统计
     const { ctx } = this
     const { id } = ctx.params
+    
     const article = await ctx.model.Article.findOneAndUpdate({ _id: id }, { $inc: { views: 1 } }).populate('author')
     this.success(article)
   }
