@@ -4,24 +4,26 @@ services:
     container_name: mongo
     #构建容器
     build: ./dump
-    ports:
-        - "27017:27017"
+    # ports:
+    #     - "27017:27017"
+    volumes: 
+        - ./data/db:/data/db
   mongo-express:
     image: mongo-express:latest
     container_name: mongo-express
     restart: always
     depends_on:
       - mongo
-    ports:
-      - 8081:8081
+    # ports:
+    #   - 8081:8081
   server:
     container_name: server
     depends_on:
       - mongo
     #构建容器
     build: ./server
-    ports:
-        - "7001:7001"
+    # ports:
+    #     - "7001:7001"
   front:
     container_name: front
     depends_on:
@@ -29,4 +31,4 @@ services:
     #构建容器
     build: ./front
     ports:
-        - "3000:3000"
+        - "6666:3000"
