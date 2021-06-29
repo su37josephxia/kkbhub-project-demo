@@ -4,8 +4,8 @@ services:
     container_name: mongo
     #构建容器
     build: ./dump
-    # ports:
-    #     - "27017:27017"
+    ports:
+        - "27017:27017"
     volumes: 
         - ./data/db:/data/db
   mongo-express:
