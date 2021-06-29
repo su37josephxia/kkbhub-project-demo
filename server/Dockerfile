@@ -6,6 +6,7 @@ ADD . /app/
 WORKDIR /app
 #安装依赖
 RUN npm config set registry http://r.npm.taobao.org/ && \    
+    npm config set sass_binary_site http://npm.taobao.org/mirrors/node-sass/ && \
     npm i
 #对外暴露的端口
 EXPOSE 3000

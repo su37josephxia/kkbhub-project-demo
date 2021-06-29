@@ -6,8 +6,8 @@ git pull
 
 # 强制重新编译容器
 docker-compose down
-docker-compose up -d --force-recreate --build
-
+# docker-compose up -d --force-recreate --build
+docker-compose up -d --build
 
 # 定制镜像
 # docker build -t myapp:pm2 ./backend
