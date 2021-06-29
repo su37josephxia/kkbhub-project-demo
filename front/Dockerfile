@@ -5,7 +5,7 @@ ADD . /app/
 #进入到app目录下面，类似cd
 WORKDIR /app
 #安装依赖
-RUN npm config set registry https://registry.npm.taobao.org/ && \    
+RUN npm config set registry http://r.npm.taobao.org/ && \    
     npm i
 RUN npm run build    
 #对外暴露的端口

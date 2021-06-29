@@ -14,16 +14,16 @@ services:
     restart: always
     depends_on:
       - mongo
-    # ports:
-    #   - 8081:8081
+    ports:
+      - 8081:8081
   server:
     container_name: server
     depends_on:
       - mongo
     #构建容器
     build: ./server
-    # ports:
-    #     - "7001:7001"
+    ports:
+        - "7001:7001"
   front:
     container_name: front
     depends_on:
@@ -31,4 +31,4 @@ services:
     #构建容器
     build: ./front
     ports:
-        - "6666:3000"
+        - "8888:3000"
