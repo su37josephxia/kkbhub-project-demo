@@ -1,0 +1,20 @@
+name: Test 
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # 下载代码
+    - name: deploy aliyun 
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.RSA_KEY }}
+        port: ${{ secrets.PORT }}
+        script: 
+          ls -a
