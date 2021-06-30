@@ -17,7 +17,6 @@ docker-compose up --force-recreate --build
 # 或
 docker-compose exec mongo mongorestore --db kkbhub ./kkbhub
 ```
- 
 ### 启动本地Mongo
 ```bash
 docker-compose up mongo mongo-express
