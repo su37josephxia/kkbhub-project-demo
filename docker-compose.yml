@@ -14,8 +14,8 @@ services:
     restart: always
     depends_on:
       - mongo
-    # ports:
-    #   - 8081:8081
+    ports:
+      - 8081:8081
   server:
     container_name: server
     depends_on:
