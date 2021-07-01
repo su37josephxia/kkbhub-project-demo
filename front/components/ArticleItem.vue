@@ -36,7 +36,7 @@ export default {
     height:100px;
   }
   a{
-    color:#00c23a;
+    color:#ffc23a;
     
   }
   .action{
